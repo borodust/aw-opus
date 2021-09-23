@@ -1,0 +1,3 @@
+[submodule "src/lib/opus"]
+	path = src/lib/opus
+	url = https://github.com/borodust/opus.git
