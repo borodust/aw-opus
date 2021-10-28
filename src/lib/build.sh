@@ -52,24 +52,23 @@ function build_android {
             ;;
     esac
 
-    mkdir -p $BUILD_DIR && cd $BUILD_DIR
-    cmake -DCLAW_ANDROID_BUILD=ON \
-          -DANDROID_ABI=$ANDROID_ABI \
+    mkdir -p $BUILD_DIR/ && cd $BUILD_DIR/
+    cmake -DANDROID_ABI=$ANDROID_ABI \
           -DANDROID_ARM_NEON=ON \
           -DCMAKE_TOOLCHAIN_FILE="$NDK/build/cmake/android.toolchain.cmake" \
-          $WORK_DIR
+          -DOPUS_BUILD_SHARED_LIBRARY=ON \
+          -DOPUS_PRESUME_NEON=ON \
+          $LIBRARY_DIR
     cmake --build . --config MinSizeRel
 }
 
 function build_desktop {
-    mkdir -p $BUILD_DIR/opus/ && cd $BUILD_DIR/opus/
+    mkdir -p $BUILD_DIR/ && cd $BUILD_DIR/
     cmake -DCMAKE_C_COMPILER=clang \
-          -DCMAKE_CXX_COMPILER=clang++ \
           -DOPUS_BUILD_SHARED_LIBRARY=ON \
           -DOPUS_X86_PRESUME_AVX=ON \
           $LIBRARY_DIR
     cmake --build . --config MinSizeRel
-    cp -L $BUILD_DIR/opus/libopus.so.0 $BUILD_DIR
 }
 
 
