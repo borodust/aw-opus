@@ -500,7 +500,7 @@
               claw-utils:claw-string
               (%opus::error :int))
 
-(cffi:defctype %opus::int64 :long)
+(cffi:defctype %opus::int64 :long-long)
 
 (cffi:defctype %opus::int8 :char)
 
@@ -508,7 +508,7 @@
 
 (cffi:defctype %opus::uint32 :unsigned-int)
 
-(cffi:defctype %opus::uint64 :unsigned-long)
+(cffi:defctype %opus::uint64 :unsigned-long-long)
 
 (cffi:defctype %opus::uint8 :unsigned-char)
 
